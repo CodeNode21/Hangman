@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman</title>
+    <link rel="stylesheet" type="text/css" href="../CSS-Reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-
-
-    <script>
-        </script>
+    <div class="jumbotron">
+        <h1 class="text-center">CodingBootCamp - Hangman</h1>
+        <p> Guess the word</p>
+    </div>
+    <div class="container">
+        <h1 class="text-center" id="current-word progress">_ _ _ _</h1>
+        <div id="buttons"></div>
+        <button type="button" id="playagain">Play Again</button>
+        <p id="wins">Wins: </p>
+        <p id="losses">Losses: </p>
+    </div>
+    <script src="logic.js">
+    </script>
     
 </body>
 </html>
