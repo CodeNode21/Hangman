@@ -11,16 +11,26 @@
 </head>
 <body>
     <div class="jumbotron">
-        <h1 class="text-center">CodingBootCamp - Hangman</h1>
-        <p> Guess the word</p>
+        <h1 class="text-center">Cities & States - Hangman</h1>
+        <p> Guess the name of a City or a Nation</p>
     </div>
     <div class="container">
-        <h1 class="text-center" id="current-word progress">_ _ _ _</h1>
+        <h1 class="text-center" id="puzzle-state">_ _ _ _</h1>
         <div id="buttons"></div>
         <button type="button" id="playagain">Play Again</button>
-        <p id="wins">Wins: </p>
-        <p id="losses">Losses: </p>
+        <p>Wrong Guess: <span id="wrong-guesses"></span></p>
+        <p>Guesses Left: <span id="guesses-left">9</span></p>
+        <p>Wins: <span id="wins">0</span></p>
+        <p>Losses: <span id="losses">0</span></p>
     </div>
+    <div class="rightcolumn">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+ 
+        </div>
     <script src="logic.js">
     </script>
     

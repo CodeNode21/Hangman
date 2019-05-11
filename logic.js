@@ -4,6 +4,9 @@ window.onload = function() {
 // Holds all the game words and buttons
 
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "_"];
+var cities = ["Bangkok", "London", "Paris", "Dubai", "New York", "Singapore", "Kuala Lumpur", "Istanbul", "Tokyo", "Seoul", "Hong Kong", "Barcelona", "Amsterdam", "Milan", "Taipei", "Rome", "Osaka", "Vienna", "Shanghai", "Prague", "Los Angeles", "Madrid", "Munich", "Miami", "Dublin", "Warsaw", "Cracow"];
+
+var states = ["France", "United States", "Spain", "China", "Italy", "Germany", "United Kingdom", "Mexico", "Thailand", "Turkey", "Austria", "Poland", "Russia", "Canada", "Brazil", "Sweden", "Australia", "Belgium", "Colombia", "Costa Rica", "Croatia", "Denmark", "Iceland", "Japan", "Korea Republic", "Portugal", "Argentina"];
 
 // Following for loop creates buttons for each letter.
 for (var i = 0; i < letters.length; i++) {
@@ -27,27 +30,27 @@ function randomWord(gameWords) {
 
 
 // 1.2 Function will confirm if the onkey is true/matches letters in the word
-function isCorrectGuess(currentWord, letter){
-    for (var i = 0; i <= currentWord.length; i++) {
-        if (word[i] === letter) {
+function isCorrectGuess(words, letter){
+    for (var i = 0; i <= words.length; i++) {
+        if (words[i] === letter) {
             return true;
         }
     }
     return false;
 };
 // 1.3 code will generate blanks. based on the length of the word
-function getBlanks(currentWord){
+function getBlanks(words){
     var answerArray = [];
-    for (var i = 0; i < word.length; i++);{
+    for (var i = 0; i < words.length; i++){
         answerArray[i] = "_";
     }
     return answerArray;
 };
 // 1.4 code which will fill in the blanks
-function fillBlanks(currentWord, progress, letter){
-     if(isCorrectGuess(currentWord, letter)){
-         for (var i = 0; i < currentWord.length; i++){
-             if (word[i] === letter) {
+function fillBlanks(words, progress, letter){
+     if(isCorrectGuess(words, letter)){
+         for (var i = 0; i < words.length; i++){
+             if (words[i] === letter) {
                  progress[i] = letter;
              }
          }
@@ -55,23 +58,23 @@ function fillBlanks(currentWord, progress, letter){
      return progress;
 };
 
-function setupRound(currentWord) {
+function setupRound(words) {
     var obj = {
-        currentWord:currentWord,
+        words:words,
         guessesLeft: 9,
         wrongGuesses:[],
-        progress: getBlanks(currentWord),
+        progress: getBlanks(words),
     }
     return obj;
 }
 
 function updateRound(obj, letter) {
-    if (isCorrectGuess(obj.currentWord, letter) === false) {
+    if (isCorrectGuess(obj.words, letter) === false) {
         obj.guesseLeft--;
         obj.wrongGuesses.push(letter);
     }
     else {
-        fillBlanks(obj.word, obj.puzzleState, letter)
+        fillBlanks(obj.words, obj.progress, letter)
     }
     return obj;
 }
@@ -117,13 +120,13 @@ function setupGame(gameWords, wins, losses) {
 
 function startNewRound(game) {
     var progress = game.round.progress;
-    var roundWord = game.round.word;
+    var roundWord = game.round.words;
     if (hasWon(progress) === true) {
         game.wins++;
         x = new Audio("")
         x.onplaying = function ()
         {
-            alert("Nice!, the word is " + currentWord + ". Good job smartiePants!");
+            alert("Nice!, the word is " + words + ". Good job smartiePants!");
         }
         x.play();
     } 
@@ -132,7 +135,7 @@ function startNewRound(game) {
         x = new Audio("")
         x.onplaying = function ()
         {
-            alert("c'mon! Word was " + currentWord + ". Don't be sorry, be better.")
+            alert("c'mon! Word was " + words + ". Don't be sorry, be better.")
         }
         x.play();
     }
@@ -143,16 +146,16 @@ var myGame = setupGame(gameWords, 0, 0);
 
 console.log(myGame);
 
-var puzzle = document.getElementById("progress")
-progress.innerHTML = myGame.round.progress.join(" ")
+var puzzle = document.getElementById("puzzle-state")
+puzzle.innerHTML = myGame.round.progress.join(" ")
 
 
 var clickPressed;
 document.onkeyup = function (event) {
     clickPressed = event.key.toLowerCase()
     console.log( clickPressed + " was clicked");
-    isCorrectGuess(myGame.round.word, clickPressed);
-    fillBlanks(myGame.round.word, myGame.round.progress,clickPressed);
+    isCorrectGuess(myGame.round.words, clickPressed);
+    fillBlanks(myGame.round.words, myGame.round.progress,clickPressed);
     updateRound(myGame.round, clickPressed);
     hasWon(myGame.round.progress);
     hasLost(myGame.round.guessesLeft);
@@ -162,7 +165,7 @@ if (isEndOfRound(myGame.round)) {
     myGame.round = setupRound(randomWord(gameWords));
 }
 
-document.getElementById("progress").innerText = myGame.round.progress.join(" ");
+document.getElementById("puzzle-state").innerText = myGame.round.progress.join(" ");
 
 document.getElementById("wrong-guesses").innerText = myGame.round.wrongGuesses;
 

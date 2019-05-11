@@ -1,4 +1,14 @@
 body{
     text-align: center;
     line-height: 2.5em;
+    background-image: url("assets/World-Map-Wallpapers-HD.jpg");
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+}
+
+.container{
+    width: 350px;
+    text-align: center;
 }
