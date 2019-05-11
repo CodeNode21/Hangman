@@ -6,9 +6,12 @@ body{
     font-size: 25px;
     color: black;
     font-weight: bold;
+    width: 980px;
+    margin: auto;
 }
 
 .container{
     width: 350px;
     text-align: center;
+    margin: auto;
 }
