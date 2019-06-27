@@ -4,7 +4,7 @@
 
 # Word Guess Game (Browser)
 
-<!-- TODO: add one sentence overview here of your progress -->
+This is a classing hangman style game - where user tries to guess the name of the city or state by choosing letters.
 
 ## Overview
 
