@@ -6,6 +6,8 @@
 
 This is a classing hangman style game - where user tries to guess the name of the city or state by choosing letters.
 
+Hey, you might find your next vacation destination. 
+
 ## Overview
 
 <!-- TODO: add a description of your assignment, theme, approach, and solution here -->
