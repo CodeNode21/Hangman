@@ -2,6 +2,8 @@ body{
     text-align: center;
     line-height: 2.5em;
     background-image: url("assets/World-Map-Wallpapers-HD.jpg");
+    background-size: cover;
+    background-position: bottom bottom;
     font-family: 'Ubuntu', sans-serif;
     font-size: 25px;
     color: black;
@@ -14,4 +16,6 @@ body{
     width: 350px;
     text-align: center;
     margin: auto;
+    background-color: rgb(171,104,24);
+    opacity: .5;
 }
